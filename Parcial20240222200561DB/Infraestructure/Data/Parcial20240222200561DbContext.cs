@@ -15,6 +15,8 @@ public partial class Parcial20240222200561DbContext : DbContext
     {
     }
 
+    public virtual DbSet<AutoParts> AutoParts { get; set; }
+
     public virtual DbSet<Mechanic> Mechanic { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,6 +25,15 @@ public partial class Parcial20240222200561DbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AutoParts>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__AutoPart__3214EC07298DC07F");
+
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.PartName).HasMaxLength(100);
+            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+        });
+
         modelBuilder.Entity<Mechanic>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Mechanic__3214EC070E24670A");

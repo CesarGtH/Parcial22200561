@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Parcial20240222200561DB.Infraestructure.Data;
+using Parcial20240222200561DB.Infraestructure.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services
     .AddDbContext<Parcial20240222200561DbContext>
     (options => options.UseSqlServer(cnx));
 
+builder.Services.AddTransient<IAutoPartsRepository, AutoPartsRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

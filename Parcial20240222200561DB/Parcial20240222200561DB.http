@@ -1,0 +1,6 @@
+@Parcial20240222200561DB_HostAddress = http://localhost:5186
+
+GET {{Parcial20240222200561DB_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
